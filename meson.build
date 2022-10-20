@@ -43,7 +43,8 @@ if vala_lint.found()
     )
 endif
 
+subdir('data')
 subdir('src')
-# subdir('data')
-# subdir('po')
-# subdir('schemas')   
+subdir('po')
+
+meson.add_install_script('build-aux/meson/postinstall.py')

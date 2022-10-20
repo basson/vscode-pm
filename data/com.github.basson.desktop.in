@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=vscode-pm
+Exec=vscode-pm
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

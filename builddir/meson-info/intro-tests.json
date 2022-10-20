@@ -1,1 +1,0 @@
-[{"cmd": ["/usr/bin/io.elementary.vala-lint", "-d", "/home/basson/Develop/Main/vscode-pm/src"], "env": {}, "name": "Vala lint", "workdir": null, "timeout": 30, "suite": ["com.github.basson_xvi.vscode"], "is_parallel": true, "priority": 0, "protocol": "exitcode"}]

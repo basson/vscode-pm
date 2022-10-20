@@ -1,0 +1,7 @@
+data/com.github.basson.desktop.in
+data/com.github.basson.appdata.xml.in
+data/com.github.basson.gschema.xml
+src/window.ui
+src/main.vala
+src/window.vala
+
