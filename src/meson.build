@@ -20,6 +20,13 @@ executable(
     'Layouts/HeaderBar.vala',
     'Layouts/Main.vala',
     'Layouts/Welcome.vala',
+    'Layouts/Projects.vala',
+    'Layouts/Views/ProjectItem.vala',
+
+    'Widgets/CreateProjectDialog.vala',
+    'Widgets/AddProjectDialog.vala',
+
+    'Services/ActionManager.vala',
 
     # asresources,
     config_header,

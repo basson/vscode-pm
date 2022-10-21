@@ -14,14 +14,14 @@ public class VSCode.Application : Gtk.Application {
         windows = new GLib.List <Window> ();
     }
 
-    public void new_window () {
-        new VSCode.Window (this).present ();
-    }
+    //  public void new_window () {
+    //      new VSCode.Window (this).present ();
+    //  }
 
-    public override void window_added (Gtk.Window window) {
-        windows.append (window as Window);
-        base.window_added (window);
-    }
+    //  public override void window_added (Gtk.Window window) {
+    //      windows.append (window as Window);
+    //      base.window_added (window);
+    //  }
 
 
     public override void window_removed (Gtk.Window window) {
@@ -29,14 +29,10 @@ public class VSCode.Application : Gtk.Application {
         base.window_removed (window);
     }
 
-    private VSCode.Window add_new_window () {
+    protected override void activate () {
+        //  this.add_new_window ();
         var window = new VSCode.Window (this);
         this.add_window (window);
 
-        return window;
-    }
-
-    protected override void activate () {
-        this.add_new_window ();
     }
 }
