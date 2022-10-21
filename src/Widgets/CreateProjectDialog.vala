@@ -68,27 +68,31 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
         grid.attach(path_label, 0, 2, 1, 1);
 
         path_button = new Gtk.FileChooserButton(_("Choise"), Gtk.FileChooserAction.SELECT_FOLDER);
+        path_button.set_hexpand(true);
         path_button.set_title("Choise VSCode Project Directory");
         path_button.file_set.connect(on_choise_path);
-        grid.attach(path_button, 1, 2, 1, 1);
+        grid.attach(path_button, 1, 2, 2, 1);
 
 
         horizontal_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 5);
         horizontal_box.set_halign(Gtk.Align.END);
-        grid.attach(horizontal_box, 0, 3, 2, 2);
+        horizontal_box.set_valign(Gtk.Align.END);
+        horizontal_box.set_baseline_position(Gtk.BaselinePosition.BOTTOM);
+        horizontal_box.margin_top = 30;
+        grid.attach(horizontal_box, 0, 3, 2, 1);
 
         create_button = new Gtk.Button();
         create_button.set_label(_("Create"));
-        create_button.set_halign(Gtk.Align.START);
+        create_button.set_halign(Gtk.Align.END);
         create_button.clicked.connect(on_create_button_clicked);
-        horizontal_box.add(create_button);
+        horizontal_box.pack_start(create_button, false, false, 5);
 
 
         cancel_button = new Gtk.Button();
         cancel_button.set_label(_("Cancel"));
         cancel_button.set_halign(Gtk.Align.END);
         cancel_button.clicked.connect(on_cancel_button_clicked);
-        horizontal_box.add(cancel_button);
+        horizontal_box.pack_end(cancel_button, false, false, 5);
     }
 
     private void on_choise_path(Gtk.FileChooserButton filechooserbutton) {

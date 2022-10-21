@@ -5,6 +5,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
     public VSCode.Layouts.Main main;
     public VSCode.Layouts.HeaderBar headerbar;
     public VSCode.Services.ActionManager action_manager;
+    public Gtk.ScrolledWindow scroller;
 
 
     public Gtk.AccelGroup accel_group { get; construct; }
@@ -18,10 +19,16 @@ public class VSCode.Window : Gtk.ApplicationWindow {
     }
 
     construct {
+        resize(300, 600);
+    
+        set_resizable(false);
+
         accel_group = new Gtk.AccelGroup();
         add_accel_group(accel_group);
 
         action_manager = new VSCode.Services.ActionManager(app, this);
+
+        scroller = new Gtk.ScrolledWindow (null, null);
 
         main = new VSCode.Layouts.Main(this);
         headerbar = new VSCode.Layouts.HeaderBar(this);
@@ -41,7 +48,8 @@ public class VSCode.Window : Gtk.ApplicationWindow {
         delete_event.connect(before_destroy);
         set_titlebar(headerbar);
         set_border_width(0);
-        add(main);
+        scroller.add(main);
+        add(scroller);
     }
 
     public bool before_destroy() {
