@@ -19,7 +19,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
     }
 
     construct {
-        resize(300, 600);
+        set_default_size (640, 480);
     
         set_resizable(false);
 
@@ -43,7 +43,15 @@ public class VSCode.Window : Gtk.ApplicationWindow {
     }
 
     private void build_ui() {
-        // Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = settings.dark_theme;
+        Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+        
+        var css_provider = new Gtk.CssProvider ();
+        css_provider.load_from_resource ("/com/github/basson_xvi/vscode-pm/stylesheet.css");
+
+        Gtk.StyleContext.add_provider_for_screen (
+            Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
+
 
         delete_event.connect(before_destroy);
         set_titlebar(headerbar);

@@ -28,7 +28,7 @@ executable(
 
     'Services/ActionManager.vala',
 
-    # asresources,
+    asresources,
     config_header,
     dependencies: [
         dependency('gtk+-3.0'),

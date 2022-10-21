@@ -42,7 +42,7 @@ public class VSCode.Layouts.Views.ProjectItem : Gtk.ListBoxRow {
         grid.attach (project_icon, 0, 0, 1, 3);
 
         name_label = new Gtk.Label(title);
-        name_label.margin_top = 10;
+        name_label.get_style_context().add_class("project-name");
         name_label.set_halign (Gtk.Align.START);
         grid.attach (name_label, 1, 0, 1, 1);
 
