@@ -2,7 +2,7 @@
 public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
     public weak VSCode.Window window { get; construct; }
 
-    private Gtk.Label header_title;
+    //  private Gtk.Label header_title;
     private Gtk.Label name_label;
     private Gtk.Label description_label;
     private Gtk.Label path_label;

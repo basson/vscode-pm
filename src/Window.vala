@@ -14,7 +14,8 @@ public class VSCode.Window : Gtk.ApplicationWindow {
         Object(
             application: vscode_app,
             app: vscode_app,
-            icon_name: Constants.PROJECT_NAME
+            //  icon_name: Constants.PROJECT_NAME
+            icon_name: "com.visualstudio.code"
         );
     }
 

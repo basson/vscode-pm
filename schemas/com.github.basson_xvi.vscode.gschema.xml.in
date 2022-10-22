@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="vscode-pm">
-	<schema id="com.github.basson" path="/com/github/basson/">
+<schemalist>
+	<schema id="@appid@" path="@schema-path@" gettext-domain="vscode_pm">
 		<key name="pos-x" type="i">
 			<default>360</default>
 			<summary>The saved horizontal position of the window.</summary>

@@ -37,7 +37,8 @@ public class VSCode.Layouts.Views.ProjectItem : Gtk.ListBoxRow {
         grid.margin = 5;
         add(grid);
 
-        project_icon = new Gtk.Image.from_icon_name ("utilities-system-monitor", Gtk.IconSize.LARGE_TOOLBAR);
+        //  project_icon = new Gtk.Image.from_icon_name ("utilities-system-monitor", Gtk.IconSize.LARGE_TOOLBAR);
+        project_icon = new Gtk.Image.from_icon_name ("sequeler", Gtk.IconSize.LARGE_TOOLBAR);
         project_icon.pixel_size = 80;
         grid.attach (project_icon, 0, 0, 1, 3);
 

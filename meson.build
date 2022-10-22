@@ -46,5 +46,6 @@ endif
 subdir('data')
 subdir('src')
 subdir('po')
+subdir('schemas')
 
 meson.add_install_script('build-aux/meson/postinstall.py')

@@ -65,10 +65,10 @@ public class VSCode.Layouts.Welcome : Granite.Widgets.Welcome {
     }
 
     private void open_data_file(Gtk.NativeDialog dialog, int response_id) {
-        var open_dialog = dialog as Gtk.FileChooserNative;
+        //  var open_dialog = dialog as Gtk.FileChooserNative;
         switch (response_id) {
             case Gtk.ResponseType.ACCEPT:
-                var file = open_dialog.get_file();
+                //  var file = open_dialog.get_file();
 
                 break;
             case Gtk.ResponseType.CANCEL:

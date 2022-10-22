@@ -30,6 +30,7 @@ public class VSCode.Application : Gtk.Application {
     }
 
     protected override void activate () {
+        Gtk.IconTheme.get_default ().add_resource_path ("com/github/basson_xvi/vscode-pm");
         //  this.add_new_window ();
         var window = new VSCode.Window (this);
         this.add_window (window);
