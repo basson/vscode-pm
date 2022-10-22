@@ -41,6 +41,9 @@ executable(
         m_dep,
         linux_dep
     ],
-        vala_args: vala_args,
+        vala_args: [
+            vala_args,
+            '--gresources', 'data/assets.gresource.xml'
+        ],
     install: true
 )

@@ -48,10 +48,12 @@ public class VSCode.Layouts.Views.ProjectItem : Gtk.ListBoxRow {
         grid.attach (name_label, 1, 0, 1, 1);
 
         description_label = new Gtk.Label(description);
+        description_label.get_style_context().add_class("project-description");
         description_label.set_halign (Gtk.Align.START);
         grid.attach (description_label, 1, 1, 1, 1);
 
         path_label = new Gtk.Label(folder);
+        path_label.get_style_context().add_class("project-path");
         path_label.set_halign (Gtk.Align.START);
         grid.attach (path_label, 1, 2, 1, 1);
 
