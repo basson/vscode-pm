@@ -1,21 +1,19 @@
 #!/usr/bin/env python3
 
-from os import environ, path
-from subprocess import call
+import os
+import subprocess
 
-prefix = environ.get('MESON_INSTALL_PREFIX', '/usr/local')
-datadir = path.join(prefix, 'share')
-destdir = environ.get('DESTDIR', '')
+install_prefix = os.environ['MESON_INSTALL_PREFIX']
+schemadir = os.path.join(install_prefix, 'share/glib-2.0/schemas')
 
-# Package managers set this so we don't need to run
-if not destdir:
-    print('Updating icon cache...')
-    call(['gtk-update-icon-cache', '-qtf', path.join(datadir, 'icons', 'hicolor')])
+if not os.environ.get('DESTDIR'):
+	print('Compiling gsettings schemas...')
+	subprocess.call(['glib-compile-schemas', schemadir])
+	
+	print('Updating icon cache...')
+	icon_cache_dir = os.path.join(install_prefix, 'share/icons/hicolor')
+	subprocess.call(['gtk-update-icon-cache', '-qtf', icon_cache_dir])
 
-    print('Updating desktop database...')
-    call(['update-desktop-database', '-q', path.join(datadir, 'applications')])
-
-    print('Compiling GSettings schemas...')
-    call(['glib-compile-schemas', path.join(datadir, 'glib-2.0', 'schemas')])
-
-
+	print('Updating desktop database...')
+	desktop_database_dir = os.path.join(install_prefix, 'share/applications')
+	subprocess.call(['update-desktop-database', '-q', desktop_database_dir])

@@ -1,9 +1,10 @@
 [Desktop Entry]
-Name=vscode-pm
-Exec=vscode-pm
+Name=VSCode PM
+Exec=com.github.basson.vscode-pm
+Icon=com.github.basson.vscode-pm
 Terminal=false
 Type=Application
 Categories=TextEditor;Development;IDE;
 StartupNotify=true
 StartupWMClass=VSCode PM
-Icon=com.visualstudio.code
+

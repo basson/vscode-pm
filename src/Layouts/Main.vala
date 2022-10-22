@@ -20,13 +20,16 @@ public class VSCode.Layouts.Main : Gtk.Paned {
         main_stack = new Gtk.Stack();
         welcome = new VSCode.Layouts.Welcome(window);
         projects = new VSCode.Layouts.Projects(window);
+
+        main_stack.add_named(welcome, "welcome");
+        main_stack.add_named(projects, "projects");
+        main_stack.set_visible_child_full("welcome", Gtk.StackTransitionType.UNDER_RIGHT);
+
         var data_file = File.new_for_path(Environment.get_home_dir() + "/Develop/.vscode.pm");
         if (data_file.query_exists()) {
             show_projects();
-        } else {
-            main_stack.add_named(welcome, "welcome");
         }
-
+        
         build_main();
     }
 
@@ -36,11 +39,8 @@ public class VSCode.Layouts.Main : Gtk.Paned {
 
     public void show_projects() {
         main_stack.remove(welcome);
-        main_stack.remove(projects);
-        
         projects.load_projects();
-        main_stack.add_named(projects, "projects");
+        main_stack.set_visible_child_full ("projects", Gtk.StackTransitionType.SLIDE_LEFT);
         print("Main::show_projects\n");
-        show_all();
     }
 }

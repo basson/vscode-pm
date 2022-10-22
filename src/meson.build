@@ -25,8 +25,10 @@ executable(
 
     'Widgets/CreateProjectDialog.vala',
     'Widgets/AddProjectDialog.vala',
+    'Widgets/EditProjectDialog.vala',
 
     'Services/ActionManager.vala',
+    'Services/Settings.vala',
 
     asresources,
     config_header,
@@ -41,9 +43,6 @@ executable(
         m_dep,
         linux_dep
     ],
-        vala_args: [
-            vala_args,
-            '--gresources', 'data/assets.gresource.xml'
-        ],
+        vala_args: vala_args,
     install: true
 )

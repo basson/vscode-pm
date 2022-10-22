@@ -1,3 +1,7 @@
+namespace  VSCode {
+    public VSCode.Services.Settings settings;
+}
+
 
 public class VSCode.Application : Gtk.Application {
     public GLib.List <Window> windows;
@@ -5,6 +9,8 @@ public class VSCode.Application : Gtk.Application {
     construct {
         application_id = Constants.PROJECT_NAME;
         flags |= ApplicationFlags.HANDLES_OPEN;
+
+        settings = new VSCode.Services.Settings ();
 
         //  schema = new Secret.Schema (Constants.PROJECT_NAME, Secret.SchemaFlags.NONE,
         //                           "id", Secret.SchemaAttributeType.INTEGER,
@@ -30,7 +36,7 @@ public class VSCode.Application : Gtk.Application {
     }
 
     protected override void activate () {
-        Gtk.IconTheme.get_default ().add_resource_path ("com/github/basson_xvi/vscode-pm");
+        Gtk.IconTheme.get_default().add_resource_path ("com/github/basson_xvi/vscode-pm/icons");
         //  this.add_new_window ();
         var window = new VSCode.Window (this);
         this.add_window (window);

@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-  input: 'com.github.basson.desktop.in',
-  output: 'com.github.basson.desktop',
+  input: 'com.github.basson.vscode-pm.desktop.in',
+  output: 'com.github.basson.vscode-pm.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -15,8 +15,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'com.github.basson.appdata.xml.in',
-  output: 'com.github.basson.appdata.xml',
+  input: 'com.github.basson.vscode-pm.appdata.xml.in',
+  output: 'com.github.basson.vscode-pm.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -29,13 +29,15 @@ if appstream_util.found()
   )
 endif
 
-install_data('com.github.basson.gschema.xml',
-  install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
-)
+# install_data('com.github.basson.vscode-pm.gschema.xml',
+#   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
+# )
 
-compile_schemas = find_program('glib-compile-schemas', required: false)
-if compile_schemas.found()
-  test('Validate schema file', compile_schemas,
-    args: ['--strict', '--dry-run', meson.current_source_dir()]
-  )
-endif
+# compile_schemas = find_program('glib-compile-schemas', required: false)
+# if compile_schemas.found()
+#   test('Validate schema file', compile_schemas,
+#     args: ['--strict', '--dry-run', meson.current_source_dir()]
+#   )
+# endif
+
+subdir('icons')

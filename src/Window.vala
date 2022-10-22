@@ -15,7 +15,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
             application: vscode_app,
             app: vscode_app,
             //  icon_name: Constants.PROJECT_NAME
-            icon_name: "com.visualstudio.code"
+            icon_name: "com.github.basson_xvi.vscode"
         );
     }
 
@@ -26,6 +26,8 @@ public class VSCode.Window : Gtk.ApplicationWindow {
 
         accel_group = new Gtk.AccelGroup();
         add_accel_group(accel_group);
+
+        
 
         action_manager = new VSCode.Services.ActionManager(app, this);
 
@@ -44,7 +46,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
     }
 
     private void build_ui() {
-        Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+        Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = settings.dark_theme;
         
         var css_provider = new Gtk.CssProvider ();
         css_provider.load_from_resource ("/com/github/basson_xvi/vscode-pm/stylesheet.css");

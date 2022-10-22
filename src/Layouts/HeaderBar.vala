@@ -2,8 +2,10 @@
 public class VSCode.Layouts.HeaderBar : Gtk.HeaderBar {
     public weak VSCode.Window window { get; construct; }
 
+    private Granite.ModeSwitch mode_switch;
     private Gtk.Button add_project_button;
-    private Gtk.Button settings_button;
+    private Gtk.Button import_button;
+    private Gtk.Button export_button;
 
 
     public bool logged_out { get; set; }
@@ -22,14 +24,36 @@ public class VSCode.Layouts.HeaderBar : Gtk.HeaderBar {
     }
 
     private void build_ui () {
-        settings_button = new Gtk.Button.from_icon_name("open-menu-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
-        settings_button.valign = Gtk.Align.CENTER;
-        settings_button.can_focus = false;
-        pack_end (settings_button);
+        mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        mode_switch.primary_icon_tooltip_text = _("Light background");
+        mode_switch.secondary_icon_tooltip_text = _("Dark background");
+        mode_switch.valign = Gtk.Align.CENTER;
+        mode_switch.bind_property ("active", settings, "dark-theme");
+        mode_switch.notify.connect (() => {
+            Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = settings.dark_theme;
+        });
+        pack_start (mode_switch);
 
-        add_project_button =  new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        if (settings.dark_theme) {
+            mode_switch.active = true;
+        }
+
+        import_button = new Gtk.Button.from_icon_name("document-open-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+        import_button.valign = Gtk.Align.CENTER;
+        import_button.can_focus = false;
+        import_button.set_tooltip_text(_("Configure"));
+        pack_end (import_button);
+        
+        export_button = new Gtk.Button.from_icon_name("document-save-as-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+        export_button.valign = Gtk.Align.CENTER;
+        export_button.can_focus = false;
+        export_button.set_tooltip_text(_("Configure"));
+        pack_end (export_button);
+
+        add_project_button =  new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
         add_project_button.valign = Gtk.Align.CENTER;
         add_project_button.can_focus = false;
+        add_project_button.set_tooltip_markup(_("Add New Project"));
         add_project_button.clicked.connect (on_click_add_project_button);
         pack_end (add_project_button);
     }

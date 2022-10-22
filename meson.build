@@ -1,5 +1,5 @@
 # project name and programming language
-project('com.github.basson_xvi.vscode', 'vala', 'c',
+project('com.github.basson_xvi.vscode-pm', 'vala', 'c',
     version: '0.0.1')
 
 cc = meson.get_compiler('c')
@@ -43,8 +43,8 @@ if vala_lint.found()
     )
 endif
 
-subdir('data')
 subdir('src')
+subdir('data')
 subdir('po')
 subdir('schemas')
 

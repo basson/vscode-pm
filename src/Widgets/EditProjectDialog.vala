@@ -1,5 +1,5 @@
 
-public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
+public class VSCode.Widgets.EditProjectDialog : Gtk.Dialog {
     public weak VSCode.Window window { get; construct; }
 
     // private Gtk.Label header_title;
@@ -27,24 +27,27 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
     private Gtk.Grid grid;
     private Gtk.Box horizontal_box;
 
-    private string project_name;
-    private string project_description;
-    private string project_path;
-    private string project_icon;
+    public string project_name { get; set; }
+    public string project_description { get; set; }
+    public string project_path { get; set; }
+    public string project_icon { get; set; }
 
-    public CreateProjectDialog(VSCode.Window ? parent) {
+    public EditProjectDialog(VSCode.Window ? parent, string name, string description, string path, string icon) {
         Object(
             border_width: 5,
             deletable: false,
             resizable: false,
             title: _("Create new VSCode project"),
             transient_for: parent,
-            window: parent
+            window: parent,
+            project_name: name,
+            project_description: description,
+            project_path: path,
+            project_icon: icon
         );
     }
 
     construct {
-        project_icon = "application";
         build_content();
     }
 
@@ -61,6 +64,7 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
         grid.attach(name_label, 0, 0, 1, 1);
 
         name_entry = new Gtk.Entry();
+        name_entry.set_text(project_name);
         grid.attach(name_entry, 1, 0, 1, 1);
 
 
@@ -69,16 +73,19 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
         grid.attach(description_label, 0, 1, 1, 1);
 
         description_entry = new Gtk.Entry();
+        description_entry.set_text(project_description);
         grid.attach(description_entry, 1, 1, 1, 1);
 
 
         path_label = new Gtk.Label(_("Project Directory:"));
         path_label.set_halign(Gtk.Align.END);
+        
         grid.attach(path_label, 0, 2, 1, 1);
 
         path_button = new Gtk.FileChooserButton(_("Choise"), Gtk.FileChooserAction.SELECT_FOLDER);
         path_button.set_hexpand(true);
         path_button.set_title("Choise VSCode Project Directory");
+        path_button.set_current_folder(project_path);
         path_button.file_set.connect(on_choise_path);
         grid.attach(path_button, 1, 2, 1, 1);
 
@@ -86,8 +93,6 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
         icon_label = new Gtk.Label(_("Project Icon:"));
         icon_label.set_halign(Gtk.Align.END);
         grid.attach(icon_label, 0, 3, 1, 1);
-
-
 
 
         icon_liststore = new Gtk.ListStore(2, typeof (Gdk.Pixbuf), typeof (string));
@@ -155,7 +160,7 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
         try {
             var data_file = File.new_for_path(Environment.get_home_dir() + "/Develop/.vscode.pm");
             var stream_data = new DataOutputStream(data_file.append_to(GLib.FileCreateFlags.NONE));
-            stream_data.put_string(project_name + "<|>" + project_description + "<|>" + project_path + "<|>" +project_icon+ "\n");
+            stream_data.put_string(project_name + "<|>" + project_description + "<|>" + project_path + "<|>" + project_icon + "\n");
             stream_data.close();
             destroy();
         } catch (Error e) {
@@ -247,10 +252,6 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
             icon_liststore.append(out icon_iter);
             pixbuf = icon_theme.load_icon("systems", 20, 0);
             icon_liststore.set(icon_iter, 0, pixbuf, 1, "systems");
-
-            // icon_liststore.append(out icon_iter);
-            // pixbuf = icon_theme.load_icon("temp", 20, 0);
-            // icon_liststore.set(icon_iter, 0, pixbuf, 1, "temp");
         } catch {
             assert_not_reached();
         }

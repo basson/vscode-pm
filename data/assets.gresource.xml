@@ -4,66 +4,25 @@
 		<file alias="stylesheet.css" compressed="true">stylesheet.css</file>
 		<!--  -->
 	</gresource>
-	<gresource prefix="/com/github/basson_xvi/vscode-pm/icons/scalable/actions/">
-		<file preprocess="xml-stripblanks" alias="sequeler.svg">icons/sequeler.svg</file>
-		<!-- <file compressed="true" preprocess="xml-stripblanks">actions/qtop.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/preferences-power.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/preferences-desktop-user-password.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/logview.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/kwrite.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/jockey.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/hwinfo.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cs-extensions.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cs-drivers.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cs-desktop-effects.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/csd-cursor.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cs-cat-hardware.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cpu-x.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cpuinfo.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/converseen.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/com.jgraph.drawio.desktop.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cmake.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/cinnamon-panel-launcher.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/ccsm.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/builder.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/budgiewprviews.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/bomber.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/blogilo.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/blinken.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/bcompare.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/battery.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/baobab.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/awf.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/atom.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/arduino.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/ardour.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/aptana.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/apport.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/application-x-clementine.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/applications-utilities.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/applications-system.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/applications-science.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/applications-php.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/applications-games.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/applications-all.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/applications-accessories.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/application-default-icon.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/appimagekit-balena-etcher-electron.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/appcode.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/android-studio.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/android-file-transfer.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/alsamixer-gui.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/alienarena.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/alevt.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/alchemy.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/akonadi.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/agave.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/aegisub.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/AdobeWidgetBrowser.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/administration.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/activity-journal.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/accessories-thesaurus.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/accessories-screenshot.svg</file>
-		<file compressed="true" preprocess="xml-stripblanks">actions/access.svg</file> -->
+	<gresource prefix="/com/github/basson_xvi/vscode-pm/icons">
+		<file preprocess="xml-stripblanks" alias="scalable/actions/systems.svg">icons/hicolor/scalable/actions/systems.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/studio.svg">icons/hicolor/scalable/actions/studio.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/stack.svg">icons/hicolor/scalable/actions/stack.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/servers.svg">icons/hicolor/scalable/actions/servers.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/power.svg">icons/hicolor/scalable/actions/power.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/php.svg">icons/hicolor/scalable/actions/php.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/hwinfo.svg">icons/hicolor/scalable/actions/hwinfo.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/hardware.svg">icons/hicolor/scalable/actions/hardware.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/game.svg">icons/hicolor/scalable/actions/game.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/database.svg">icons/hicolor/scalable/actions/database.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/builder.svg">icons/hicolor/scalable/actions/builder.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/powers.svg">icons/hicolor/scalable/actions/powers.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/arduino.svg">icons/hicolor/scalable/actions/arduino.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/application.svg">icons/hicolor/scalable/actions/application.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/app-image.svg">icons/hicolor/scalable/actions/app-image.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/android.svg">icons/hicolor/scalable/actions/android.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/alien.svg">icons/hicolor/scalable/actions/alien.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/alchemy.svg">icons/hicolor/scalable/actions/alchemy.svg</file>
+		<file preprocess="xml-stripblanks" alias="scalable/actions/addon.svg">icons/hicolor/scalable/actions/addon.svg</file>
 	</gresource>
 </gresources>
