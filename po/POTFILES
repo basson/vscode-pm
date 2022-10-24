@@ -1,7 +1,19 @@
-data/com.github.basson.desktop.in
-data/com.github.basson.appdata.xml.in
-data/com.github.basson.gschema.xml
-src/window.ui
-src/main.vala
-src/window.vala
+src/Main.vala
+src/Application.vala
+src/Window.vala
 
+src/Layouts/HeaderBar.vala
+src/Layouts/Main.vala
+src/Layouts/Welcome.vala
+src/Layouts/Projects.vala
+src/Layouts/Views/ProjectItem.vala
+
+src/Widgets/AddProjectDialog.vala
+src/Widgets/EditProjectDialog.vala
+
+src/Models/Project.vala
+src/Models/Icon.vala
+
+src/Services/ActionManager.vala
+src/Services/Settings.vala
+src/Services/ProjectManager.vala

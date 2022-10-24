@@ -1,8 +1,4 @@
-#if IS_DEVEL
-public const string APP_NAME = "(Development) VSCode PM";
-#else
 public const string APP_NAME = "VSCode PM";
-#endif
 public const string TERMINAL_NAME = "codepm";
 
 public static int main (string[] args) {

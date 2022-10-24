@@ -1,7 +1,4 @@
 schema_path = '/com/github/basson/vscode-pm/'
-if get_option('profile') == 'development'
-	schema_path += 'Devel/'
-endif
 
 schema_conf = configuration_data()
 schema_conf.set('appid', application_id)
