@@ -5,6 +5,7 @@
 
 # Vala meson duild dir 
 builddir/
+build/
 
 # Node artifact files
 node_modules/

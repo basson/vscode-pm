@@ -30,19 +30,19 @@
   <url type="help">https://github.com/basson/vscode-pm/issues</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot.png</image>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/main/data/screenshots/vscode-pm-screenshot.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot1.png</image>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/main/data/screenshots/vscode-pm-screenshot1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot2.png</image>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/main/data/screenshots/vscode-pm-screenshot2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot3.png</image>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/main/data/screenshots/vscode-pm-screenshot3.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot4.png</image>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/main/data/screenshots/vscode-pm-screenshot4.png</image>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">com.github.basson.vscode-pm.desktop</launchable>
