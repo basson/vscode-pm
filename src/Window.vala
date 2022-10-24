@@ -15,7 +15,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
             application: vscode_app,
             app: vscode_app,
             // icon_name: Constants.PROJECT_NAME
-            icon_name: "com.github.basson_xvi.vscode"
+            icon_name: "com.github.basson.vscode-pm"
         );
     }
 
@@ -49,7 +49,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
         Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = settings.dark_theme;
 
         var css_provider = new Gtk.CssProvider ();
-        css_provider.load_from_resource ("/com/github/basson_xvi/vscode-pm/stylesheet.css");
+        css_provider.load_from_resource ("/com/github/basson/vscode-pm/stylesheet.css");
 
         Gtk.StyleContext.add_provider_for_screen (
             Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION

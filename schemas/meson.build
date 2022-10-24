@@ -1,4 +1,4 @@
-schema_path = '/com/github/basson_xvi/vscode-pm/'
+schema_path = '/com/github/basson/vscode-pm/'
 if get_option('profile') == 'development'
 	schema_path += 'Devel/'
 endif

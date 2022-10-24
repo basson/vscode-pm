@@ -6,7 +6,7 @@ install_data(
 )
 
 install_data(
-  'com.github.basson_xvi.vscode-pm.svg',
+  'com.github.basson.vscode-pm.svg',
   install_dir: join_paths(icondir, 'symbolic/apps'),
   rename: '@0@-symbolic.svg'.format(application_id),
 )

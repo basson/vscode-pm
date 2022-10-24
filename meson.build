@@ -1,5 +1,5 @@
 # project name and programming language
-project('com.github.basson_xvi.vscode-pm', 'vala', 'c',
+project('com.github.basson.vscode-pm', 'vala', 'c',
     version: '0.0.1')
 
 cc = meson.get_compiler('c')

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-	<gresource prefix="/com/github/basson_xvi/vscode-pm">
+	<gresource prefix="/com/github/basson/vscode-pm">
 		<file alias="stylesheet.css" compressed="true">stylesheet.css</file>
 		<!--  -->
 	</gresource>
-	<gresource prefix="/com/github/basson_xvi/vscode-pm/icons">
+	<gresource prefix="/com/github/basson/vscode-pm/icons">
 		<file preprocess="xml-stripblanks" alias="scalable/actions/systems.svg">icons/hicolor/scalable/actions/systems.svg</file>
 		<file preprocess="xml-stripblanks" alias="scalable/actions/studio.svg">icons/hicolor/scalable/actions/studio.svg</file>
 		<file preprocess="xml-stripblanks" alias="scalable/actions/stack.svg">icons/hicolor/scalable/actions/stack.svg</file>
