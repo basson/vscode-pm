@@ -42,7 +42,6 @@ public class VSCode.Services.ProjectManager : Object {
             return true;
         } catch (Error e) {
             error ("%s", e.message);
-            return false;
         }
     }
 
@@ -59,7 +58,6 @@ public class VSCode.Services.ProjectManager : Object {
             return true;
         } catch (Error e) {
             error ("%s", e.message);
-            return false;
         }
     }
 

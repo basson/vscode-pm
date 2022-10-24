@@ -40,6 +40,14 @@ public class VSCode.Services.Settings : GLib.Settings {
             set_boolean ("dark-theme", value);
         }
     }
+    public string exec {
+        owned get {
+            return get_string ("exec");
+        }
+        set {
+            set_string ("exec", value);
+        }
+    }
     public string version {
         owned get {
             return get_string ("version");

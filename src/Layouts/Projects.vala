@@ -44,8 +44,10 @@ public class VSCode.Layouts.Projects : Gtk.ListBox {
 
     public void on_activate_project (Gtk.ListBoxRow row) {
         var row_item = row as VSCode.Layouts.Views.ProjectItem;
+        var exec = settings.exec;
+        exec = exec.replace ("%path", row_item.project.folder);
+        print ("ProjectItem::on_activate_project: %s\n", exec);
 
-        print ("ProjectItem::on_activate_project: %s\n", row_item.project.folder);
-        Posix.system ("cd '" + row_item.project.folder + "' && code .");
+        Posix.system (exec);
     }
 }

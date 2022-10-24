@@ -30,6 +30,12 @@
 			<description>Switch between Light and Dark theme.</description>
 		</key>
 
+		<key name="exec" type="s">
+			<default>"cd '%path' &amp;&amp; code ."</default>
+			<summary>Exec CMD</summary>
+			<description>Configuring launch from the command line.</description>
+		</key>
+
 		<key name="version" type="s">
 			<default>""</default>
 			<summary>Current Version</summary>
