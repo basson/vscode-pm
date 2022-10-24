@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--  -->
 <component type="desktop">
-	<id>com.github.basson.vscode-pm</id>
-	<metadata_license>CC0-1.0</metadata_license>
-	<project_license>GPL-3.0-or-later</project_license>
-	<description>
-	</description>
+  <id>com.github.basson.vscode-pm</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>VSCode PM</name>
+  <summary>Launcher and Project Manager for Visual Studio Code</summary>
+  <description>
+    <p>Easily organize and management your Visual Studio Code Projects</p>
+  </description>
+  <releases>
+    <release version="0.0.1" date="2022-10-24">
+      <description>
+        <p>Initial Release</p>
+        <ul>
+          <li>Add Projects</li>
+          <li>Run Projects</li>
+          <li>Import/Export Projects data</li>
+          <li>Edit exec command</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <developer_name>Denis Kazachenkov</developer_name>
+  <update_contact>basson30@gmail.com</update_contact>
+  <url type="homepage">https://github.com/basson/vscode-pm</url>
+  <url type="donation">https://www.buymeacoffee.com/basson</url>
+  <url type="bugtracker">https://github.com/basson/vscode-pm/issues</url>
+  <url type="help">https://github.com/basson/vscode-pm/issues</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot3.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/basson/vscode-pm/master/data/assets/screenshots/vscode-pm-screenshot4.png</image>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">com.github.basson.vscode-pm.desktop</launchable>
+  <provides>
+    <binary>com.github.basson.vscode-pm</binary>
+  </provides>
+  <content_rating type="oars-1.1" />
 </component>
