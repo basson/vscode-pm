@@ -10,14 +10,10 @@ public class VSCode.Services.ActionManager : Object {
 
     public const string ACTION_PREFIX = "win.";
     public const string ACTION_SHOW_PROJECTS = "action_show_projects";
-    public const string ACTION_EDIT_PROJECT = "action_edit_project";
-    public const string ACTION_DELETE_PROJECT = "action_delete_project";
     public const string ACTION_QUIT = "action_quit";
 
     private const ActionEntry[] ACTION_ENTRIES = {
         { ACTION_SHOW_PROJECTS, action_show_projects },
-        { ACTION_EDIT_PROJECT, action_edit_project },
-        { ACTION_DELETE_PROJECT, action_delete_project },
         { ACTION_QUIT, action_quit }
     };
 
@@ -45,14 +41,8 @@ public class VSCode.Services.ActionManager : Object {
 
     private void action_show_projects() {
         print("action show project\n");
+        window.main.projects.update_project();
         window.main.show_projects();
     }
 
-    private void action_edit_project() {
-        
-    }
-
-    private void action_delete_project() {
-        
-    }
 }

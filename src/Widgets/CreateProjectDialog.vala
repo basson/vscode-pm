@@ -17,6 +17,7 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
 
     private Gtk.FileChooserButton path_button;
 
+    private VSCode.Models.Icons icons;
     private Gtk.ComboBox icon_combobox;
     private Gtk.ListStore icon_liststore;
     private Gtk.TreeIter icon_iter;
@@ -88,8 +89,7 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
         grid.attach(icon_label, 0, 3, 1, 1);
 
 
-
-
+        icons = new VSCode.Models.Icons();
         icon_liststore = new Gtk.ListStore(2, typeof (Gdk.Pixbuf), typeof (string));
         set_icon_liststore();
 
@@ -152,15 +152,11 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
             alert_dialog.run();
             return;
         }
-        try {
-            var data_file = File.new_for_path(Environment.get_home_dir() + "/Develop/.vscode.pm");
-            var stream_data = new DataOutputStream(data_file.append_to(GLib.FileCreateFlags.NONE));
-            stream_data.put_string(project_name + "<|>" + project_description + "<|>" + project_path + "<|>" +project_icon+ "\n");
-            stream_data.close();
-            destroy();
-        } catch (Error e) {
-            error("%s", e.message);
-        }
+        project_manager.set(new VSCode.Models.Project(project_manager.size() + 1, project_name, project_description, project_path, project_icon));
+
+        VSCode.Services.ActionManager.action_from_group(VSCode.Services.ActionManager.ACTION_SHOW_PROJECTS, window.get_action_group("win"));
+        
+        destroy();
     }
 
     private void on_cancel_button_clicked(Gtk.Button button) {
@@ -171,86 +167,11 @@ public class VSCode.Widgets.CreateProjectDialog : Gtk.Dialog {
         Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
         Gdk.Pixbuf pixbuf;
         try {
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("addon", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "addon");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("alchemy", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "alchemy");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("alien", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "alien");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("android", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "android");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("app-image", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "app-image");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("application", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "application");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("arduino", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "arduino");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("powers", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "powers");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("builder", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "builder");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("database", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "database");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("game", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "game");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("hardware", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "hardware");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("hwinfo", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "hwinfo");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("php", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "php");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("power", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "power");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("servers", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "servers");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("stack", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "stack");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("studio", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "studio");
-
-            icon_liststore.append(out icon_iter);
-            pixbuf = icon_theme.load_icon("systems", 20, 0);
-            icon_liststore.set(icon_iter, 0, pixbuf, 1, "systems");
-
-            // icon_liststore.append(out icon_iter);
-            // pixbuf = icon_theme.load_icon("temp", 20, 0);
-            // icon_liststore.set(icon_iter, 0, pixbuf, 1, "temp");
+            for (var i = 0; i < icons.size(); i++) {
+                icon_liststore.append(out icon_iter);
+                pixbuf = icon_theme.load_icon(icons.get(i), 20, 0);
+                icon_liststore.set(icon_iter, 0, pixbuf, 1, icons.get(i));
+            }
         } catch {
             assert_not_reached();
         }

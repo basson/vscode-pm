@@ -12,59 +12,51 @@ public class VSCode.Layouts.Views.ProjectItem : Gtk.ListBoxRow {
 
     private Gtk.Grid grid;
 
-    public int index { get; construct; }
-    public string title  { get; construct; }
-    public string description  { get; construct; }
-    public string folder { get; construct; }
-    public string icon  { get; construct; }
-    public bool select {get; set;}
+    public VSCode.Models.Project project { get; construct; }
 
 
-    public ProjectItem(VSCode.Window main_window, int index, string name_text, string description_text, string path_text, string icon_name) {
+    public ProjectItem(VSCode.Window main_window, VSCode.Models.Project model) {
         Object(
             window: main_window,
-            index: index,
-            title: name_text,
-            description: description_text,
-            folder: path_text,
-            icon: icon_name
+            project: model
         );
     }
 
     construct {
-        select = false;
 
-        valign = Gtk.Align.FILL;
-        halign = Gtk.Align.FILL;
-        vexpand = true;
-        hexpand = true;
+        // valign = Gtk.Align.FILL;
+        // halign = Gtk.Align.FILL;
+        // vexpand = true;
+        // hexpand = true;
+
         margin_bottom = 10;
 
 
         grid = new Gtk.Grid();
         grid.set_row_spacing(1);
         grid.set_column_spacing(10);
-        grid.set_hexpand(true);
-        grid.set_halign(Gtk.Align.FILL);
+        // grid.set_hexpand(true);
+        // grid.set_halign(Gtk.Align.FILL);
+        grid.expand = true;
         grid.margin = 5;
         add(grid);
 
         // project_icon = new Gtk.Image.from_icon_name ("utilities-system-monitor", Gtk.IconSize.LARGE_TOOLBAR);
-        project_icon = new Gtk.Image.from_icon_name(icon, Gtk.IconSize.LARGE_TOOLBAR);
+        project_icon = new Gtk.Image.from_icon_name(project.icon, Gtk.IconSize.LARGE_TOOLBAR);
         project_icon.pixel_size = 80;
         grid.attach(project_icon, 0, 0, 1, 3);
 
-        name_label = new Gtk.Label(title);
+        name_label = new Gtk.Label(project.title);
         name_label.get_style_context().add_class("project-name");
         name_label.set_halign(Gtk.Align.START);
         grid.attach(name_label, 1, 0, 1, 1);
 
-        description_label = new Gtk.Label(description);
+        description_label = new Gtk.Label(project.description);
         description_label.get_style_context().add_class("project-description");
         description_label.set_halign(Gtk.Align.START);
         grid.attach(description_label, 1, 1, 3, 1);
 
-        path_label = new Gtk.Label(folder);
+        path_label = new Gtk.Label(project.folder);
         path_label.get_style_context().add_class("project-path");
         path_label.set_halign(Gtk.Align.START);
         grid.attach(path_label, 1, 2, 3, 1);
@@ -82,18 +74,32 @@ public class VSCode.Layouts.Views.ProjectItem : Gtk.ListBoxRow {
         grid.attach(delete_button, 3, 0, 1, 1);
 
 
-        print("ProjectItem::construct\n");
 
         // activate.connect (on_activate_project);
     }
 
     private void on_edit_button_clicked(Gtk.Button button) {
-        select = true;
-        VSCode.Services.ActionManager.action_from_group(VSCode.Services.ActionManager.ACTION_EDIT_PROJECT, window.get_action_group("win"));
+        var edit_dialog = new Widgets.EditProjectDialog(window, project);
+        edit_dialog.modal = true;
+        edit_dialog.show_all();
     }
 
     private void on_delete_button_clicked(Gtk.Button button) {
-        select = true;
-        VSCode.Services.ActionManager.action_from_group(VSCode.Services.ActionManager.ACTION_DELETE_PROJECT, window.get_action_group("win"));
+        var confirm_dialog = new Gtk.MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.QUESTION, Gtk.ButtonsType.YES_NO, _("You a realy delete project?"));
+        confirm_dialog.response.connect(on_confirm_delete);
+        confirm_dialog.show_all();
+    }
+
+    public void on_confirm_delete(Gtk.Dialog dialog, int response_id) {
+        switch (response_id) {
+            case Gtk.ResponseType.YES:
+                project_manager.remove(project);
+                VSCode.Services.ActionManager.action_from_group(VSCode.Services.ActionManager.ACTION_SHOW_PROJECTS, window.get_action_group("win"));
+                break;
+            case Gtk.ResponseType.NO:
+            case Gtk.ResponseType.DELETE_EVENT:
+                break;
+        }
+        dialog.destroy();
     }
 }

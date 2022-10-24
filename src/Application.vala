@@ -1,5 +1,6 @@
 namespace  VSCode {
     public VSCode.Services.Settings settings;
+    public VSCode.Services.ProjectManager project_manager;
 }
 
 
@@ -11,6 +12,7 @@ public class VSCode.Application : Gtk.Application {
         flags |= ApplicationFlags.HANDLES_OPEN;
 
         settings = new VSCode.Services.Settings ();
+        project_manager = new VSCode.Services.ProjectManager ();
 
         //  schema = new Secret.Schema (Constants.PROJECT_NAME, Secret.SchemaFlags.NONE,
         //                           "id", Secret.SchemaAttributeType.INTEGER,

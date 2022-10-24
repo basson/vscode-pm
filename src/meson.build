@@ -27,8 +27,12 @@ executable(
     'Widgets/AddProjectDialog.vala',
     'Widgets/EditProjectDialog.vala',
 
+    'Models/Project.vala',
+    'Models/Icon.vala',
+
     'Services/ActionManager.vala',
     'Services/Settings.vala',
+    'Services/ProjectManager.vala',
 
     asresources,
     config_header,

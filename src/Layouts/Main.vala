@@ -7,6 +7,8 @@ public class VSCode.Layouts.Main : Gtk.Paned {
     public VSCode.Layouts.Welcome welcome;
     public VSCode.Layouts.Projects projects;
 
+    public VSCode.Widgets.EditProjectDialog edit_dialog;
+
     public Gtk.Stack main_stack;
 
     public Main(VSCode.Window main_window) {
@@ -21,15 +23,15 @@ public class VSCode.Layouts.Main : Gtk.Paned {
         welcome = new VSCode.Layouts.Welcome(window);
         projects = new VSCode.Layouts.Projects(window);
 
+        //  main_stack.add_named(welcome, "welcome");
         main_stack.add_named(welcome, "welcome");
         main_stack.add_named(projects, "projects");
         main_stack.set_visible_child_full("welcome", Gtk.StackTransitionType.UNDER_RIGHT);
+        main_stack.set_visible_child_full("projects", Gtk.StackTransitionType.SLIDE_LEFT);
 
-        var data_file = File.new_for_path(Environment.get_home_dir() + "/Develop/.vscode.pm");
-        if (data_file.query_exists()) {
             show_projects();
-        }
         
+
         build_main();
     }
 
@@ -38,9 +40,16 @@ public class VSCode.Layouts.Main : Gtk.Paned {
     }
 
     public void show_projects() {
-        main_stack.remove(welcome);
-        projects.load_projects();
-        main_stack.set_visible_child_full ("projects", Gtk.StackTransitionType.SLIDE_LEFT);
-        print("Main::show_projects\n");
+        if (project_manager.size() == 0 || project_manager.is_empty()) {
+            print("Main::show_projects welcome %d\n", project_manager.size());
+            projects.set_visible(false);
+            welcome.set_visible(true);
+        } else {
+            print("Main::show_projects project %d\n", project_manager.size());
+            projects.set_visible(true);
+            welcome.set_visible(false);
+        }
+        //  show_all();
+        
     }
 }
