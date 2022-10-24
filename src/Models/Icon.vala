@@ -2,7 +2,7 @@ public class VSCode.Models.Icons : GLib.Object {
 
     public string[] list;
 
-    public Icons() {
+    public Icons () {
         list = {
             "addon",
             "alchemy",
@@ -26,7 +26,7 @@ public class VSCode.Models.Icons : GLib.Object {
         };
     }
 
-    public int get_index(string name) {
+    public int get_index (string name) {
         for (var i = 0; i < list.length; i++) {
             if (list[i] == name)
                 return i;
@@ -34,13 +34,13 @@ public class VSCode.Models.Icons : GLib.Object {
         return 0;
     }
 
-    public new string ? get(int index) {
+    public new string ? get (int index) {
         if (index > list.length)
             return null;
         return list[index];
     }
 
-    public int size() {
+    public int size () {
         return list.length;
     }
 }

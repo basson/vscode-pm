@@ -17,8 +17,8 @@ public class VSCode.Services.ActionManager : Object {
         { ACTION_QUIT, action_quit }
     };
 
-    public ActionManager(VSCode.Application vscode_app, VSCode.Window main_window) {
-        Object(
+    public ActionManager (VSCode.Application vscode_app, VSCode.Window main_window) {
+        Object (
             app: vscode_app,
             window: main_window
         );
@@ -26,23 +26,22 @@ public class VSCode.Services.ActionManager : Object {
 
 
     construct {
-        actions = new SimpleActionGroup();
-        actions.add_action_entries(ACTION_ENTRIES, this);
-        window.insert_action_group("win", actions);
+        actions = new SimpleActionGroup ();
+        actions.add_action_entries (ACTION_ENTRIES, this);
+        window.insert_action_group ("win", actions);
     }
 
-    public static void action_from_group(string action_name, ActionGroup ? action_group) {
-        action_group.activate_action(action_name, null);
+    public static void action_from_group (string action_name, ActionGroup ? action_group) {
+        action_group.activate_action (action_name, null);
     }
 
-    private void action_quit() {
-        window.before_destroy();
+    private void action_quit () {
+        window.before_destroy ();
     }
 
-    private void action_show_projects() {
-        print("action show project\n");
-        window.main.projects.update_project();
-        window.main.show_projects();
+    private void action_show_projects () {
+        print ("action show project\n");
+        window.main.projects.update_project ();
+        window.main.show_projects ();
     }
-
 }

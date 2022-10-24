@@ -23,7 +23,6 @@ executable(
     'Layouts/Projects.vala',
     'Layouts/Views/ProjectItem.vala',
 
-    'Widgets/CreateProjectDialog.vala',
     'Widgets/AddProjectDialog.vala',
     'Widgets/EditProjectDialog.vala',
 
