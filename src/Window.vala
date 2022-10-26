@@ -14,6 +14,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
         Object (
             application: vscode_app,
             app: vscode_app,
+            title: settings.window_title,
             // icon_name: Constants.PROJECT_NAME
             icon_name: "com.github.basson.vscode-pm"
         );
@@ -65,7 +66,7 @@ public class VSCode.Window : Gtk.ApplicationWindow {
 
     public bool before_destroy () {
         app.get_active_window ().destroy ();
-        return true;
+        return false;
     }
 
     public void show_app () {

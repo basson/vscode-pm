@@ -6,8 +6,12 @@ public class VSCode.Layouts.HeaderBar : Gtk.HeaderBar {
     private Gtk.Button add_project_button;
     private Gtk.Button import_button;
     private Gtk.Button export_button;
-    private Gtk.MenuButton exec_button;
+    private Gtk.MenuButton config_button;
+
+    private Gtk.Label exec_label;
+    private Gtk.Label window_title_label;
     private Gtk.Entry exec_entry;
+    private Gtk.Entry window_title_entry;
 
 
     public bool logged_out { get; set; }
@@ -42,29 +46,48 @@ public class VSCode.Layouts.HeaderBar : Gtk.HeaderBar {
 
 
 
-        exec_button = new Gtk.MenuButton ();
-        exec_button.set_image (new Gtk.Image.from_icon_name ("application-x-executable-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
-        exec_button.valign = Gtk.Align.CENTER;
-        exec_button.can_focus = false;
-        exec_button.set_tooltip_markup (_("Set Exec CMD"));
-        // exec_button.clicked.connect (on_click_exec_button);
+        config_button = new Gtk.MenuButton ();
+        config_button.set_image (new Gtk.Image.from_icon_name ("preferences-system-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+        config_button.valign = Gtk.Align.CENTER;
+        config_button.can_focus = false;
+        config_button.set_tooltip_markup (_("Set Exec CMD"));
+        
+        exec_label = new Gtk.Label (_("Exec:"));
+        exec_label.valign = Gtk.Align.END;
+        exec_label.margin_end = 5;
+        exec_label.margin_bottom = 5;
+
         exec_entry = new Gtk.Entry ();
         exec_entry.set_text (settings.exec);
         exec_entry.width_chars = 30;
         exec_entry.height_request = 5;
-        var exec_grid = new Gtk.Grid ();
-        exec_grid.expand = true;
-        exec_grid.margin = 10;
-        exec_grid.orientation = Gtk.Orientation.VERTICAL;
-        exec_grid.attach (exec_entry, 0, 1, 1, 1);
-        exec_grid.show_all ();
+        exec_entry.margin_bottom = 5;
 
-        var exec_popover = new Gtk.Popover (exec_button);
-        exec_popover.add (exec_grid);
-        exec_popover.closed.connect (on_close_exec_popover);
-        exec_button.popover = exec_popover;
-        exec_button.valign = Gtk.Align.CENTER;
-        pack_end (exec_button);
+        window_title_label = new Gtk.Label (_("Title:"));
+        window_title_label.valign = Gtk.Align.END;
+        window_title_label.margin_end = 5;
+
+        window_title_entry = new Gtk.Entry ();
+        window_title_entry.set_text (settings.window_title);
+        window_title_entry.width_chars = 30;
+        window_title_entry.height_request = 5;
+
+        var config_grid = new Gtk.Grid ();
+        config_grid.expand = true;
+        config_grid.margin = 10;
+        config_grid.orientation = Gtk.Orientation.VERTICAL;
+        config_grid.attach (exec_label, 0, 1, 1, 1);
+        config_grid.attach (exec_entry, 1, 1, 1, 1);
+        config_grid.attach (window_title_label, 0, 2, 1, 1);
+        config_grid.attach (window_title_entry, 1, 2, 1, 1);
+        config_grid.show_all ();
+
+        var config_popover = new Gtk.Popover (config_button);
+        config_popover.add (config_grid);
+        config_popover.closed.connect (on_close_exec_popover);
+        config_button.popover = config_popover;
+        config_button.valign = Gtk.Align.CENTER;
+        pack_end (config_button);
 
         import_button = new Gtk.Button.from_icon_name ("document-open-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
         import_button.valign = Gtk.Align.CENTER;
@@ -112,6 +135,8 @@ public class VSCode.Layouts.HeaderBar : Gtk.HeaderBar {
 
     private void on_close_exec_popover () {
         settings.exec = exec_entry.get_text ();
+        settings.window_title = window_title_entry.get_text ();
+        window.set_title (settings.window_title);
     }
 
     private void on_import_projects (Gtk.NativeDialog dialog, int response_id) {

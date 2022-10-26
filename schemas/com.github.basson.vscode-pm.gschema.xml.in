@@ -24,6 +24,12 @@
 			<description>The saved height of the window. Must be greater than 500, or it will not take effect.</description>
 		</key>
 
+		<key name="window-title" type="s">
+			<default>"VSCode PM"</default>
+			<summary>Windows title</summary>
+			<description>Set the launcher windows title.</description>
+		</key>
+
 		<key name="dark-theme" type="b">
 			<default>true</default>
 			<summary>Use dark theme</summary>

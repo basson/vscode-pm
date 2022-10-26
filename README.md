@@ -12,10 +12,16 @@ Launcher and Project Manager for Visual Studio Code
 * gee-0.8
 * gobject-2.0
 * libxml-2.0
+* appstream-util
 * meson
 
 ## Building
+
 ```
 meson build --prefix=/usr
 sudo ninja -C build install
 ```
+
+---
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/basson)

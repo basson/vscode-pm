@@ -32,6 +32,14 @@ public class VSCode.Services.Settings : GLib.Settings {
             set_int ("window-height", value);
         }
     }
+    public string window_title {
+        owned get {
+            return get_string ("window-title");
+        }
+        set {
+            set_string ("window-title", value);
+        }
+    }
     public bool dark_theme {
         get {
             return get_boolean ("dark-theme");
